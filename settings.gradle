@@ -15,8 +15,8 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://maven.pkg.github.com/naseem123/chatbot_sdk_channel")
             credentials {
-                username = 'naseem123'
-                password = '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'
+                username = System.getenv('GITHUB_USER')
+                password = System.getenv('GITHUB_TOKEN')
             }
         }
         maven {
