@@ -18,9 +18,14 @@ import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugins.GeneratedPluginRegistrant
 
 const val FLUTTER_ENGINE_ID = "flutter_engine"
+/*
+    This class manages the flutter engine initialization
+ */
 
-class ChannelHandler(context: Context, appId: String,
-                     origin: String,) : FlutterPlugin, MethodCallHandler {
+class ChannelHandler(
+    context: Context, appId: String,
+    origin: String,
+) : FlutterPlugin, MethodCallHandler {
 
     private lateinit var channel: MethodChannel
     private var completables: MutableMap<String, ((MethodCall) -> Unit)> =
@@ -34,7 +39,7 @@ class ChannelHandler(context: Context, appId: String,
 
         flutterEngine.dartExecutor.executeDartEntrypoint(
             DartExecutor.DartEntrypoint.createDefault(),
-            listOf(appId ,origin)
+            listOf(appId, origin)
         )
         flutterEngine.plugins.add(this)
         GeneratedPluginRegistrant.registerWith(flutterEngine)
@@ -44,17 +49,17 @@ class ChannelHandler(context: Context, appId: String,
 
     }
 
-    override fun onAttachedToEngine( flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+    override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "chatbot_channel")
         channel.setMethodCallHandler(this)
     }
 
-    override fun onMethodCall( call: MethodCall,  result: Result) {
+    override fun onMethodCall(call: MethodCall, result: Result) {
         val requestId = call.argument<String>("requestId")!!
         completables[requestId]?.invoke(call)
     }
 
-    override fun onDetachedFromEngine( binding: FlutterPlugin.FlutterPluginBinding) {
+    override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         channel.setMethodCallHandler(null)
     }
 
