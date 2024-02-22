@@ -5,13 +5,15 @@ buildscript {
     repositories {
         mavenCentral()
     }
+    dependencies {
+        classpath 'com.github.kezong:fat-aar:1.3.8'
+    }
 }
 
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
-    id 'com.kezong.fat-aar'
 }
 
 android {
@@ -50,7 +52,9 @@ android {
     }
 }
 
-//apply plugin: 'com.kezong.fat-aar'
+apply plugin: 'com.kezong.fat-aar'
+apply plugin: 'kotlin-kapt'
+
 dependencies {
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
