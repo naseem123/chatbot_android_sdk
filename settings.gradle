@@ -27,4 +27,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "ChatbotAndroidSDK"
 include ':app'
-include ':mylibrary'
