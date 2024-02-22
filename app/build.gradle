@@ -19,11 +19,11 @@ plugins {
 
 android {
     namespace 'com.thinkresearch.chatbot'
-    compileSdk 34
+    compileSdk 33
 
     defaultConfig {
         minSdk 24
-        targetSdk 34
+        targetSdk 33
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
