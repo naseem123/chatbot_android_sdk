@@ -73,6 +73,23 @@ dependencies {
 
     debugEmbed "com.thinkresearch.chatbot:flutter_release:$sdkVersion"
     releaseEmbed "com.thinkresearch.chatbot:flutter_release:$sdkVersion"
+
+
+    debugEmbed "io.flutter.plugins.pathprovider:path_provider_android_release:$sdkVersion"
+    releaseEmbed "io.flutter.plugins.pathprovider:path_provider_android_release:$sdkVersion"
+
+    debugEmbed "io.flutter.plugins.sharedpreferences:shared_preferences_android_release:$sdkVersion"
+    releaseEmbed "io.flutter.plugins.sharedpreferences:shared_preferences_android_release:$sdkVersion"
+
+    debugEmbed "com.tekartik.sqflite:sqflite_release:$sdkVersion"
+    releaseEmbed "com.tekartik.sqflite:sqflite_release:$sdkVersion"
+
+    debugEmbed "io.flutter.plugins.urllauncher:url_launcher_android_release:$sdkVersion"
+    releaseEmbed "io.flutter.plugins.urllauncher:url_launcher_android_release:$sdkVersion"
+
+    debugEmbed "io.flutter.plugins.webviewflutter:webview_flutter_android_release:$sdkVersion"
+    releaseEmbed "io.flutter.plugins.webviewflutter:webview_flutter_android_release:$sdkVersion"
+
 }
 
 def groovyShell = new GroovyShell()
@@ -80,3 +97,5 @@ def addDll = groovyShell.parse(new File("$rootDir/app/add-dll.gradle"))
 
 addDll.clean(rootDir.toString())
 addDll.flutter(rootDir.toString(), flutterEngine)
+addDll.sqlite(rootDir.toString())
+
