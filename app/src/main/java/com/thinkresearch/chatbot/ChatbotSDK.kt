@@ -16,8 +16,6 @@ class ChatBotSDK {
     private var handler: ChannelHandler? = null
     private var _appId: String? = null
     private var _origin: String? = null
-
-    private
     fun initialize(
         appId: String,
         origin: String,
