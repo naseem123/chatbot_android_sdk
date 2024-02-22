@@ -91,7 +91,8 @@ dependencies {
 def groovyShell = new GroovyShell()
 def addDll = groovyShell.parse(new File("$rootDir/app/add-dll.gradle"))
 
-/*addDll.clean(rootDir.toString())
+addDll.clean(rootDir.toString())
 addDll.flutter(rootDir.toString(), flutterEngine)
-addDll.sqlite(rootDir.toString())*/
+addDll.sqlite(rootDir.toString())
+
 

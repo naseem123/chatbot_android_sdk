@@ -4,6 +4,7 @@
  */
 
 package com.thinkresearch.chatbot
+
 import android.content.Context
 import com.thinkresearch.chatbot.channel.ChannelHandler
 import kotlinx.coroutines.Deferred
@@ -20,10 +21,9 @@ class ChatBotSDK {
         appId: String,
         origin: String,
         context: Context,
-    ): Deferred<Unit> {
-        return MainScope().async {
-            handler = ChannelHandler(context,appId, origin)
-            }
+    ) { handler = ChannelHandler(context,appId, origin)
+        _appId = appId
+        _origin = origin
         }
 
     private val isInitialized: Boolean
