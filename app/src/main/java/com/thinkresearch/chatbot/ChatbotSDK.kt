@@ -9,7 +9,9 @@ import com.thinkresearch.chatbot.channel.ChannelHandler
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.async
-
+/*
+ThinkResearch Chatbot SDK
+ */
 class ChatBotSDK {
     private var handler: ChannelHandler? = null
     private var _appId: String? = null
