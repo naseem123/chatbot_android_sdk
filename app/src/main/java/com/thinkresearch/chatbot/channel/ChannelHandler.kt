@@ -23,7 +23,9 @@ const val FLUTTER_ENGINE_ID = "flutter_engine"
  */
 
 class ChannelHandler(
-    context: Context, appId: String,
+    context: Context,
+    appId: String,
+    baseUrl: String,
     origin: String,
 ) : FlutterPlugin, MethodCallHandler {
 
@@ -39,7 +41,7 @@ class ChannelHandler(
 
         flutterEngine.dartExecutor.executeDartEntrypoint(
             DartExecutor.DartEntrypoint.createDefault(),
-            listOf(appId, origin)
+            listOf(appId,origin, baseUrl)
         )
         flutterEngine.plugins.add(this)
         GeneratedPluginRegistrant.registerWith(flutterEngine)
