@@ -1,5 +1,5 @@
 buildscript {
-    ext.sdkVersion = "1.0.11+2"
+    ext.sdkVersion = "1.0.12+1"
     ext.flutterEngine = "1.0.0-45f6e009110df4f34ec2cf99f63cf73b71b7a420"
 
     repositories {
@@ -23,16 +23,18 @@ android {
     defaultConfig {
         minSdk 24
         targetSdk 33
-        versionCode 6
-        versionName "1.5"
+        versionCode 3
+        versionName "1.0.12"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
+            shrinkResources false
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            useProguard false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -60,19 +62,25 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation libs.navigation.fragment.ktx
+    implementation libs.navigation.fragment.ktx
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
+    implementation("androidx.webkit:webkit:1.9.0")
+
+    implementation libs.navigation.ui.ktx
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    debugEmbed "io.flutter:flutter_embedding_release:$flutterEngine"
-    releaseEmbed "io.flutter:flutter_embedding_release:$flutterEngine"
+    debugEmbed ("io.flutter:flutter_embedding_release:$flutterEngine"){
+        transitive = false
+    }
+    releaseEmbed ("io.flutter:flutter_embedding_release:$flutterEngine"){
+        transitive = false
+    }
 
     debugEmbed "com.thinkresearch.chatbot_native:flutter_release:$sdkVersion"
     releaseEmbed "com.thinkresearch.chatbot_native:flutter_release:$sdkVersion"
-
-    debugEmbed "com.pichillilorenzo.flutter_inappwebview_android:flutter_inappwebview_android_release:$sdkVersion"
-    releaseEmbed "com.pichillilorenzo.flutter_inappwebview_android:flutter_inappwebview_android_release:$sdkVersion"
 
     debugEmbed "io.flutter.plugins.pathprovider:path_provider_android_release:$sdkVersion"
     releaseEmbed "io.flutter.plugins.pathprovider:path_provider_android_release:$sdkVersion"
@@ -85,6 +93,7 @@ dependencies {
 
     debugEmbed "io.flutter.plugins.urllauncher:url_launcher_android_release:$sdkVersion"
     releaseEmbed "io.flutter.plugins.urllauncher:url_launcher_android_release:$sdkVersion"
+
 
     debugEmbed "io.flutter.plugins.webviewflutter:webview_flutter_android_release:$sdkVersion"
     releaseEmbed "io.flutter.plugins.webviewflutter:webview_flutter_android_release:$sdkVersion"
