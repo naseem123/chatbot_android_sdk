@@ -16,18 +16,21 @@ ThinkResearch Chatbot SDK
 class ChatBotSDK {
     private var handler: ChannelHandler? = null
     private var _appId: String? = null
+    private var _baseUrl: String? = null
     private var _origin: String? = null
     fun initialize(
         appId: String,
+        baseUrl: String,
         origin: String,
         context: Context,
-    ) { handler = ChannelHandler(context,appId, origin)
+    ) { handler = ChannelHandler(context,appId,baseUrl, origin)
         _appId = appId
+        _baseUrl = baseUrl
         _origin = origin
         }
 
     private val isInitialized: Boolean
-        get() = handler != null && _appId!=null && _origin!= null
+        get() = handler != null && _appId!=null && _baseUrl!= null && _origin!= null
 
     fun start(context: Context) {
         throwIfNotInitialized()
