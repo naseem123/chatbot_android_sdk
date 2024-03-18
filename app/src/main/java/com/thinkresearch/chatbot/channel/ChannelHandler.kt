@@ -27,7 +27,8 @@ class ChannelHandler(
     appId: String,
     baseUrl: String,
     origin: String,
-) : FlutterPlugin, MethodCallHandler {
+    lang: String,
+    ) : FlutterPlugin, MethodCallHandler {
 
     private lateinit var channel: MethodChannel
     private var completables: MutableMap<String, ((MethodCall) -> Unit)> =
@@ -41,7 +42,7 @@ class ChannelHandler(
 
         flutterEngine.dartExecutor.executeDartEntrypoint(
             DartExecutor.DartEntrypoint.createDefault(),
-            listOf(appId,origin, baseUrl)
+            listOf(appId,origin, baseUrl,lang)
         )
         flutterEngine.plugins.add(this)
         GeneratedPluginRegistrant.registerWith(flutterEngine)

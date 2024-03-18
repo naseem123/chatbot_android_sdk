@@ -7,9 +7,6 @@ package com.thinkresearch.chatbot
 
 import android.content.Context
 import com.thinkresearch.chatbot.channel.ChannelHandler
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.async
 /*
 ThinkResearch Chatbot SDK
  */
@@ -18,15 +15,19 @@ class ChatBotSDK {
     private var _appId: String? = null
     private var _baseUrl: String? = null
     private var _origin: String? = null
+    private var _lang: String = "en"
+
     fun initialize(
         appId: String,
         baseUrl: String,
         origin: String,
+        lang: String = "en",
         context: Context,
-    ) { handler = ChannelHandler(context,appId,baseUrl, origin)
+    ) { handler = ChannelHandler(context,appId,baseUrl, origin, lang)
         _appId = appId
         _baseUrl = baseUrl
         _origin = origin
+        _lang = lang
         }
 
     private val isInitialized: Boolean
